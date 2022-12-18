@@ -43,11 +43,11 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
-  spriteExtrude: 1
+  spriteExtrude: 0
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -440,12 +440,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DirtBrick_Assets_V5_16
+      name: Cep1
       rect:
         serializedVersion: 2
-        x: 288
+        x: 292
         y: 241
-        width: 16
+        width: 7
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -654,9 +654,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 144
-        y: 225
+        y: 238
         width: 16
-        height: 16
+        height: 3
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -675,9 +675,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 160
-        y: 225
+        y: 238
         width: 16
-        height: 16
+        height: 3
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -839,12 +839,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DirtBrick_Assets_V5_35
+      name: Cep2
       rect:
         serializedVersion: 2
-        x: 288
+        x: 292
         y: 225
-        width: 16
+        width: 7
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1217,13 +1217,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DirtBrick_Assets_V5_53
+      name: Cep3
       rect:
         serializedVersion: 2
-        x: 288
-        y: 209
-        width: 16
-        height: 16
+        x: 292
+        y: 212
+        width: 7
+        height: 13
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3217,7 +3217,6 @@ TextureImporter:
       DirtBrick_Assets_V5_159: 527569808
       DirtBrick_Assets_V5_105: -1646408299
       DirtBrick_Assets_V5_70: 532496404
-      DirtBrick_Assets_V5_53: -1734490371
       DirtBrick_Assets_V5_91: -1681583814
       DirtBrick_Assets_V5_113: 255531920
       DirtBrick_Assets_V5_69: -1276498753
@@ -3235,7 +3234,6 @@ TextureImporter:
       DirtBrick_Assets_V5_138: -784785282
       DirtBrick_Assets_V5_82: -1541142802
       DirtBrick_Assets_V5_26: -523422823
-      DirtBrick_Assets_V5_35: -712306277
       DirtBrick_Assets_V5_128: 2139368545
       DirtBrick_Assets_V5_188: -172909531
       DirtBrick_Assets_V5_112: -2110051440
@@ -3285,7 +3283,6 @@ TextureImporter:
       DirtBrick_Assets_V5_155: 1116854709
       Coin_4: 220689503
       DirtBrick_Assets_V5_133: 2031675562
-      DirtBrick_Assets_V5_16: -1212809209
       DirtBrick_Assets_V5_95: 595008297
       DirtBrick_Assets_V5_28: -746459875
       DirtBrick_Assets_V5_156: -461314908
@@ -3356,6 +3353,7 @@ TextureImporter:
       DirtBrick_Assets_V5_63: 748550363
       DirtBrick_Assets_V5_66: 69771097
       DirtBrick_Assets_V5_106: 1562110335
+      Cep1: -1212809209
       DirtBrick_Assets_V5_121: 399910495
       DirtBrick_Assets_V5_142: -1542573769
       DirtBrick_Assets_V5_21: 950317411
@@ -3367,12 +3365,14 @@ TextureImporter:
       DirtBrick_Assets_V5_10: -640125181
       DirtBrick_Assets_V5_131: -286963113
       DirtBrick_Assets_V5_42: -1726165098
+      Cep3: -1734490371
       DirtBrick_Assets_V5_9: -1755338597
       DirtBrick_Assets_V5_103: 2009215418
       DirtBrick_Assets_V5_73: 267064150
       DirtBrick_Assets_V5_4: -56049549
       DirtBrick_Assets_V5_96: 1140594002
       DirtBrick_Assets_V5_197: -42985239
+      Cep2: -712306277
       DirtBrick_Assets_V5_180: -187142950
       DirtBrick_Assets_V5_176: -1774331629
       DirtBrick_Assets_V5_108: -1250356309
