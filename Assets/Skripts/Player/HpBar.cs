@@ -14,16 +14,14 @@ public class HpBar : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerHealth.OnDamage += ChangeHp;
+        PlayerHealth.ChangerHp += ChangeHp;
         PlayerHealth.OnDead += NullBar;
-        PlayerHealth.OnHeal += ChangeHp;
     }
 
     private void OnDisable()
     {
-        PlayerHealth.OnDamage -= ChangeHp;
+        PlayerHealth.ChangerHp -= ChangeHp;
         PlayerHealth.OnDead -= NullBar;
-        PlayerHealth.OnHeal -= ChangeHp;
     }
 
     private void Start()
@@ -47,15 +45,9 @@ public class HpBar : MonoBehaviour
         }
     }
 
-    private void ResetHpbar()
-    {
-        _hpBar.fillAmount = 1f;
-        newHp = _hpBar.fillAmount;
-    }
-
     private void ChangeHp(float valueChange)
     {
-        newHp += valueChange / 100;
+        newHp = valueChange;
         _hpBar.fillAmount = newHp;
         StartCoroutine(TimeToAnimation());
     }

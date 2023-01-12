@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5352799491703326520}
   - component: {fileID: 712136838979475312}
+  - component: {fileID: 1886718868}
+  - component: {fileID: 1886718871}
   m_Layer: 0
   m_Name: Bady
   m_TagString: Untagged
@@ -48,6 +50,32 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.8009112}
   m_Size: {x: 0.53, y: 1.5999074}
   m_Direction: 0
+--- !u!114 &1886718868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4091008419189635210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62dc790fe1f4a1c4c9c5097bcb347636, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 100
+  _die: {fileID: 1886718871}
+--- !u!114 &1886718871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4091008419189635210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dff486f430e509c45ae4201ad1f583fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5123269295440055327
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,7 +223,7 @@ MonoBehaviour:
   _speed: 5
   _maxHeightJump: 10
   _valueJump: 1
-  animationCurve:
+  _animationCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
@@ -208,49 +236,31 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: -0.5
-      value: -4
-      inSlope: 7.4990425
-      outSlope: 7.4990425
+      time: -0.1
+      value: -0.01
+      inSlope: 0.117036745
+      outSlope: 0.117036745
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: -0.35
-      value: -0.8
-      inSlope: 10.072159
-      outSlope: 10.072159
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      outWeight: 0.21810949
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.35
-      value: 0.8
-      inSlope: 9.528958
-      outSlope: 9.528958
+      inSlope: 0.008990722
+      outSlope: 0.008990722
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.33333334
+      outWeight: 0.096496545
     - serializedVersion: 3
-      time: 0.5
-      value: 4
-      inSlope: 7.4582424
-      outSlope: 7.4582424
+      time: 0.1
+      value: 0.01
+      inSlope: 0.13029894
+      outSlope: 0.13029894
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0.120087184
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
@@ -264,9 +274,11 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  _animator: {fileID: 181269803}
+  _playerSprite: {fileID: 5123269295440055313}
   _timeDelayToContact: 0.1
   _timeDelayAfterContact: 0.15
-  _coefficientFalls: 1.5
+  _coefficientFalls: 2
   _playerCollider: {fileID: 712136838979475312}
   _layerGraund:
     serializedVersion: 2
@@ -296,8 +308,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _goPref: {fileID: 2776606503860070440, guid: b68cd0002fdf79740872c72818e09023, type: 3}
-  _force: 0
-  _posShot: {fileID: 735069800128445253}
+  _force: 10
+  _animator: {fileID: 181269803}
+  _centreShot: {fileID: 735069800128445253}
+  _playerColl: {fileID: 712136838979475312}
 --- !u!1 &7074881006204118493
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,7 +336,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7074881006204118493}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.554, y: 0.823, z: 0}
+  m_LocalPosition: {x: 0.084, y: 1.017, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

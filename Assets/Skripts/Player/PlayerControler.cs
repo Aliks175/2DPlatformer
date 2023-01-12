@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -10,10 +11,12 @@ public class PlayerControler : MonoBehaviour
     [SerializeField] private float _maxHeightJump;
     [SerializeField] private byte _valueJump = 1;
     [SerializeField] private AnimationCurve _animationCurve;
+    [Header("Animator Settings")]
+    [SerializeField] private Animator _animator;
+    [SerializeField] private SpriteRenderer _playerSprite;
     [Header("Delay Settings")]
     [SerializeField] private float _timeDelayToContact;
     [SerializeField] private float _timeDelayAfterContact;
-    [SerializeField] private float _coefficientFalls = 1.5f;
     [Header("Layer Settings")]
     [SerializeField] private Collider2D _playerCollider;
     [SerializeField] private LayerMask _layerGraund;
@@ -23,12 +26,18 @@ public class PlayerControler : MonoBehaviour
     private bool isnoUseJump;
     private bool isjumpAfterContact;
     private bool inair;
+    public static event Action<bool> OnFlip;
 
-    private void Awake()
+    private void OnEnable()
     {
         InputControler.OnMove += ChangePosPlayer;
         InputControler.OnJump += CheckGround;
-        InputControler.OnFall += FallButtonClick;
+    }
+
+    private void OnDisable()
+    {
+        InputControler.OnMove -= ChangePosPlayer;
+        InputControler.OnJump -= CheckGround;
     }
 
     private void Start()
@@ -40,9 +49,9 @@ public class PlayerControler : MonoBehaviour
     private void FixedUpdate()
     {
         isgroundContact = _playerCollider.IsTouchingLayers(_layerGraund);
-
         if (isgroundContact)
         {
+            _animator.SetBool(ConstAnimation.Fall, false);
             if (!inair)
             {
                 RecoverValueJump();
@@ -54,6 +63,7 @@ public class PlayerControler : MonoBehaviour
         {
             if (inair)
             {
+                _animator.SetBool(ConstAnimation.Fall, true);
                 inair = false;
                 StartCoroutine(TimeAfterContact());
             }
@@ -66,7 +76,7 @@ public class PlayerControler : MonoBehaviour
         {
             if (isgroundContact)
             {
-                JumpPlayer();
+                AnimJumpPlayer();
                 StopCoroutine(TimeToContact());
             }
             yield return new WaitForSeconds(_timeDelayToContact);
@@ -93,7 +103,25 @@ public class PlayerControler : MonoBehaviour
 
     private void ChangePosPlayer(float moveLine)
     {
-        rig.velocity = new Vector2(_animationCurve.Evaluate(moveLine), rig.velocity.y);
+        if (Mathf.Abs(moveLine) > 0.01f)
+        {
+            _animator.SetBool(ConstAnimation.Mover, true);
+            rig.velocity = new Vector2(_animationCurve.Evaluate(moveLine), rig.velocity.y);
+            float changeX = rig.velocity.x;
+            if (changeX > 0.1)
+            {
+                _playerSprite.flipX = false;
+            }
+            else if (changeX < -0.1)
+            {
+                _playerSprite.flipX = true;
+            }
+            OnFlip?.Invoke(_playerSprite.flipX);
+        }
+        else
+        {
+            _animator.SetBool(ConstAnimation.Mover, false);
+        }
     }
 
     private void RecoverValueJump()
@@ -101,29 +129,28 @@ public class PlayerControler : MonoBehaviour
         valueRemainingJump = _valueJump;
     }
 
-    private void JumpPlayer()
+    private void AnimJumpPlayer()
     {
         if (valueRemainingJump > 0)
         {
+            _animator.SetTrigger(ConstAnimation.Jump);
             isnoUseJump = false;
             --valueRemainingJump;
-            rig.velocity = new Vector2(rig.velocity.x, _maxHeightJump);
         }
     }
 
-    private void FallButtonClick()
+    private void Jump()
     {
-        if (rig.velocity.y > 0)
-        {
-            rig.velocity = new Vector2(rig.velocity.x, rig.velocity.y / _coefficientFalls);
-        }
+        rig.velocity = new Vector2(rig.velocity.x, _maxHeightJump);
     }
+
+
 
     private void CheckGround()
     {
         if (_valueJump > 1)
         {
-            JumpPlayer();
+            AnimJumpPlayer();
         }
         else
         {
@@ -135,13 +162,13 @@ public class PlayerControler : MonoBehaviour
     {
         if (isgroundContact)
         {
-            JumpPlayer();
+            AnimJumpPlayer();
         }
         else
         {
             if (isjumpAfterContact && isnoUseJump)
             {
-                JumpPlayer();
+                AnimJumpPlayer();
             }
             StartCoroutine(TimeToContact());
         }

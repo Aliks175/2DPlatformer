@@ -11,21 +11,20 @@ public class Health : MonoBehaviour
         currentHealth = _maxHealth;
     }
 
-    public virtual void TakeDamage(float value)
+    public virtual void TakeDamage(float enterDamage)
     {
-        currentHealth -= value;
-        CheckAlife();
+        currentHealth += enterDamage;
+        CheckAlife(enterDamage);
     }
 
-    protected void CheckAlife()
+    protected void CheckAlife(float enterDamage)
     {
-        if (currentHealth > 0)
+        if (currentHealth + enterDamage > 0)
         {
-           
         }
         else
         {
-            
+            currentHealth = 0;
             Die();
         }
     }

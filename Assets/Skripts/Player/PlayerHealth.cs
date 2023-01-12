@@ -1,19 +1,27 @@
 using System;
+using UnityEngine;
 
 public class PlayerHealth : Health
 {
-    public static event Action<float> OnDamage;
-    public static event Action<float> OnHeal;
+    public static event Action<float> ChangerHp;
     public static event Action OnDead;
 
     public override void TakeDamage(float value)
     {
-        OnDamage?.Invoke(value);
-        currentHealth -= value;
-        CheckAlife();
+        if (value > 0)
+        {
+            TakeHeal(value);
+        }
+        else
+        {
+            currentHealth += value;
+        }
+        Debug.Log(currentHealth);
+        SendHP();
+        CheckAlife(value);
     }
 
-    public void TakeHeal(float value)
+    private void TakeHeal(float value)
     {
         if (currentHealth + value > _maxHealth)
         {
@@ -23,7 +31,11 @@ public class PlayerHealth : Health
         {
             currentHealth += value;
         }
-        OnHeal?.Invoke(value);
+    }
+
+    private void SendHP()
+    {
+        ChangerHp?.Invoke(currentHealth / _maxHealth);
     }
 
     protected override void Die()
