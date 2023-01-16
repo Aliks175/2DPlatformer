@@ -19,10 +19,7 @@ public class Health : MonoBehaviour
 
     protected void CheckAlife(float enterDamage)
     {
-        if (currentHealth + enterDamage > 0)
-        {
-        }
-        else
+        if (currentHealth + enterDamage < 0)
         {
             currentHealth = 0;
             Die();
